@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_16_034506) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_16_164640) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -23,6 +23,22 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_16_034506) do
     t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
+  create_table "strength_exercises", force: :cascade do |t|
+    t.string "name"
+    t.integer "sets"
+    t.integer "reps"
+    t.integer "weight"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_strength_exercises_on_user_id"
+  end
+
+  create_table "strength_exercises_users", id: false, force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "strength_exercise_id", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email_address", null: false
     t.string "password_digest", null: false
@@ -32,4 +48,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_16_034506) do
   end
 
   add_foreign_key "sessions", "users"
+  add_foreign_key "strength_exercises", "users"
 end
