@@ -21,8 +21,10 @@ default: &default
 
 
 development:
-  <<: *default
-  database: myapp_development
+  adapter: postgresql
+  host: localhost
+  username: user
+  database: app-dev
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
