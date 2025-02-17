@@ -14,6 +14,16 @@ class StrengthExercisesController < ApplicationController
     end
   end
 
+  def destroy
+    current_user_id = session[:user_id]
+    strength_exercise_id = params[:id]
+    @strength_exercise = StrengthExercise.find(strength_exercise_id)
+
+    @strength_exercise.destroy
+    
+    redirect_back_or_to('/strength_exercises', allow_other_host: false)
+  end
+
   private
     def current_users_strength_exercises
       current_user_id = session[:user_id]

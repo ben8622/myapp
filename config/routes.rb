@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get "/strength_exercises", to:  "strength_exercises#index"
   post "/strength_exercises", to:  "strength_exercises#create"
+  post "/strength_exercises/delete", to: "strength_exercises#destroy"
   resource :session
   resources :passwords, param: :token
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

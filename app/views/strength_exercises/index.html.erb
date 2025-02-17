@@ -33,6 +33,8 @@
         <th>Sets</th>
         <th>Reps</th>
         <th>Weight</th>
+        <th>Date</th>
+        <th>Actions</th>
     </tr>
     <% @strength_exercises.each do |strength_exercise| %>
         <tr>
@@ -40,6 +42,11 @@
             <td><%= strength_exercise.sets %></td>
             <td><%= strength_exercise.reps %></td>
             <td><%= strength_exercise.weight %></td>
+            <td><%= strength_exercise.created_at %></td>
+            <td>
+                <%= button_to "delete", {:controller => :strength_exercises,
+                    :action => 'destroy', :id => strength_exercise.id } %> 
+            </td>
         </tr>
     <% end %>
 </table>
