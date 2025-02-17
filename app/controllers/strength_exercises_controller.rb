@@ -8,7 +8,7 @@ class StrengthExercisesController < ApplicationController
     @strength_exercise = StrengthExercise.new(name: params[:name], sets: params[:sets], reps: params[:reps], weight: params[:weight], user_id: current_user_id)
     if @strength_exercise.save
       current_users_strength_exercises()
-      redirect_back_or_to('/strength_exercises', allow_other_host: false)
+      redirect_back_or_to("/strength_exercises", allow_other_host: false)
     else
       render :new, status: :unprocessable_entity
     end
@@ -20,8 +20,8 @@ class StrengthExercisesController < ApplicationController
     @strength_exercise = StrengthExercise.find(strength_exercise_id)
 
     @strength_exercise.destroy
-    
-    redirect_back_or_to('/strength_exercises', allow_other_host: false)
+
+    redirect_back_or_to("/strength_exercises", allow_other_host: false)
   end
 
   private
