@@ -1,55 +1,58 @@
 <h1>Strength Exercises</h1>
 
-<%= form_with do |form| %>
-    <h2>Add new exercise:</h2>
-    <div>
-        <%= form.label :name %>
-        <%= form.text_field :name %>
-    <div>
+<div >
+ <h2>Add new exercise:</h2>
+    <%= form_with class:'strength-exercise-form' do |form| %>
+        <div class='form-input'>
+            <%= form.label :name %>
+            <%= form.text_field :name %>
+        </div>
+        <div class='form-input'>
+            <%= form.label :sets %>
+            <%= form.number_field :sets, value: 3 %>
+        </div>
+        <div class='form-input'>
+            <%= form.label :reps %>
+            <%= form.number_field :reps, value: 8 %>
+        </div>
+        <div class='form-input'>
+            <%= form.label :weight %>
+            <%= form.number_field :weight, value: 135 %>
+        </div>
+        <div class='form-submit'>
+            <%= form.submit "Add Exercise" %>
+        </div>
+    <% end %> 
+</div>
 
-    <div>
-        <%= form.label :sets %>
-        <%= form.number_field :sets %>
-    <div>
-
-    <div>
-        <%= form.label :reps %>
-        <%= form.number_field :reps %>
-    <div>
-
-    <div>
-        <%= form.label :weight %>
-        <%= form.number_field :weight %>
-    <div>
-
-    <div>
-        <%= form.submit "Add Exercise" %>
-    </div>
-<% end %>
-
-<table class="exercises-table">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Sets</th>
-            <th>Reps</th>
-            <th>Weight</th>
-            <th>Date</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <% @strength_exercises.each do |strength_exercise| %>
-        <tr>
-            <td><%= strength_exercise.name %></td>
-            <td><%= strength_exercise.sets %></td>
-            <td><%= strength_exercise.reps %></td>
-            <td><%= strength_exercise.weight %></td>
-            <td><%= strength_exercise.created_at.to_date() %></td>
-            <td>
-                <%= button_to "delete", {:controller => :strength_exercises,
-                    :action => 'destroy', :id => strength_exercise.id } %> 
-            </td>
-        </tr>
-    <% end %>
-</table>
+<div>
+    <h2>Logged Exercises:</h2>
+    <table class="exercises-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Sets</th>
+                <th>Reps</th>
+                <th>Weight</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @strength_exercises.each do |strength_exercise| %>
+                <tr>
+                    <td><%= strength_exercise.name %></td>
+                    <td><%= strength_exercise.sets %></td>
+                    <td><%= strength_exercise.reps %></td>
+                    <td><%= strength_exercise.weight %></td>
+                    <td><%= strength_exercise.created_at.to_date() %></td>
+                    <td>
+                        <%= button_to "delete", {:controller => :strength_exercises,
+                            :action => 'destroy', :id => strength_exercise.id } %> 
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
 
