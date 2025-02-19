@@ -5,7 +5,7 @@ class StrengthExercisesFlowTest < ActionDispatch::IntegrationTest
     get "/session/new"
     assert_response 200, status
 
-    post "/session", params: { email_address: users(:one).email_address, password: "password"}
+    post "/session", params: { email_address: users(:one).email_address, password: "password" }
     puts("POST /session status: #{status}")
     follow_redirect!
 
