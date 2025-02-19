@@ -23,15 +23,11 @@
 
   <body>
     <nav>
-
-      <div>
-        <% if authenticated? %>
-          <%= button_to "Home", "/", method: :get %>
-          <%= button_to "Strength Exercises", strength_exercises_path, method: :get %>
-          <%= button_to "Log out", session_path, method: :delete %>
-        <% end %>
-      </div>
-
+      <% if authenticated? %>
+        <%= button_to "HOME", "/", method: :get, class: "nav-button" %>
+        <%= button_to "STR EXERCISES", strength_exercises_path, method: :get, class: "nav-button" %>
+        <%= button_to "LOG OUT", session_path, method: :delete, class: "nav-button" %>
+      <% end %>
     </nav>
 
     <main>
